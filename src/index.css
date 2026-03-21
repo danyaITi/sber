@@ -1,0 +1,32 @@
+:root {
+  --color-white: #fff;
+  --color-black: #000;
+  --color-1: #6d6b6b;
+  --color-2: #f0f0f0;
+  --color-3: #198552;
+
+  --font-weight-700: 600;
+  --font-weight-600: 600;
+  --font-weight-400: 400;
+
+  --font-size-16: 16px;
+  --font-size-14: 14px;
+  --font-size-12: 12px;
+}
+
+* {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-14);
+  font-style: normal;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: var(--color-black);
+}
+
+button {
+  outline: none;
+  border: 0;
+}

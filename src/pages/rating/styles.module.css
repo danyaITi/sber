@@ -1,150 +1,159 @@
-.username {
-  color: var(--color-white);
-  font-size: var(--font-size-16);
-  display: block;
-  text-align: center;
+.ratingHeader {
+  display: flex;
+  justify-content: center;
   margin-bottom: 24px;
-  font-weight: 300;
 }
 
-.header {
+.ratingCard {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 12px;
+  align-items: center;
+  background: linear-gradient(135deg, var(--color-5), var(--color-10));
+  padding: 16px 24px;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  min-width: 320px;
 }
 
-.header img {
-  width: 110px;
-  height: 110px;
-}
-
-.header div:nth-child(odd) {
+.ratingLeft {
   display: flex;
   flex-direction: column;
-  margin-top: 18px;
+  color: var(--color-white);
 }
 
-.header div:last-child {
+.ratingNumber {
+  font-size: var(--font-size-48);
+  font-weight: var(--font-weight-700);
+  line-height: 1;
+  color: var(--color-6);
+}
+
+.ratingLabel {
+  font-size: var(--font-size-14);
+  margin-top: 4px;
+  opacity: 0.8;
+  color: var(--color-white);
+}
+
+.ratingLevel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 12px 16px;
+  border-radius: 16px;
+}
+
+.ratingLevel img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.levelBox {
   background: rgba(255, 255, 255, 0.12);
   padding: 12px 32px;
   border-radius: 50px;
-  box-shadow: 0px 2.20372px 2.20372px 1.10186px rgba(0, 0, 0, 0.11);
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.header span {
-  color: var(--color-white);
-}
-
-.header .currentRatingText {
-  color: var(--color-white);
-  font-size: var(--font-size-16);
-}
-
-.header .rating {
-  font-size: 100px;
-  font-weight: var(--font-weight-800);
-}
-
-.levelText {
-  font-size: var(--font-size-9);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .levelText[data-name="gold"]::after {
-  font-size: var(--font-size-22);
+  font-weight: 700;
+  font-size: var(--font-size-16);
+  color: var(--color-5);
+  display: block;
   content: "GOLD";
-  font-weight: var(--font-weight-900);
   letter-spacing: 0.7px;
   background: var(--color-gradient-gold);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-  display: inline-block;
   filter: drop-shadow(2.20372px 2.20372px 3.64753px rgba(0, 0, 0, 0.3));
 }
 
 .levelText[data-name="silver"]::after {
-  font-size: var(--font-size-22);
+  font-weight: 700;
+  font-size: var(--font-size-16);
+  color: var(--color-5);
+  display: block;
   content: "SILVER";
-  font-weight: var(--font-weight-900);
   letter-spacing: 0.7px;
   background: var(--color-gradient-silver);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-  display: inline-block;
   filter: drop-shadow(4px 4px 6.62069px rgba(0, 0, 0, 0.3));
 }
 
 .levelText[data-name="black"]::after {
-  font-size: var(--font-size-22);
+  font-weight: 700;
+  font-size: var(--font-size-16);
+  color: var(--color-5);
+  display: block;
   content: "BLACK";
-  font-weight: var(--font-weight-900);
   letter-spacing: 0.7px;
   background: var(--color-gradient-black);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-  display: inline-block;
   filter: drop-shadow(4px 4px 6.62069px rgba(74, 74, 74, 0.3));
-
-  flex-grow: 0;
-}
-
-.container {
-  background: var(--color-white);
-  padding: 18px;
-  border-radius: 24px;
 }
 
 .container h1 {
-  font-size: 20px;
-  color: var(--color-black);
+  font-size: var(--font-size-16);
   font-weight: var(--font-weight-600);
+  color: var(--color-black);
   margin-bottom: 8px;
 }
 
 .subtitle {
   font-size: var(--font-size-14);
   color: var(--color-1);
-  margin-bottom: 17px;
+  margin-bottom: 16px;
 }
 
 .card {
-  background: var(--color-2);
+  background: var(--color-white);
   border-radius: 16px;
-  padding: 13px 19px;
-  margin-bottom: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   position: relative;
-  min-height: 170px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.cardInteractive:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
 }
 
 .cardContent {
-  max-width: 75%;
+  max-width: 70%;
 }
 
 .cardContent h2 {
   font-size: var(--font-size-14);
   font-weight: var(--font-weight-600);
-  margin: 0 0 7px;
+  margin-bottom: 6px;
 }
 
 .cardContent p {
   font-size: var(--font-size-12);
   color: var(--color-1);
-  margin: 0 0 10px;
+  margin-bottom: 8px;
 }
 
 .list {
-  padding-left: 19px;
+  padding-left: 16px;
 }
 
 .list li {
@@ -153,10 +162,10 @@
   margin-bottom: 4px;
 }
 
-.card img {
-  position: absolute;
-  top: 0;
-  right: 0;
+.cardImage {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
 }
 
 .score {
@@ -165,32 +174,40 @@
   justify-content: center;
   align-items: center;
   position: absolute;
-  bottom: 13px;
-  right: 15px;
+  bottom: 12px;
+  right: 12px;
 }
 
-.score span {
-  color: var(--color-3);
-  line-height: 1;
-}
-
-.score span:first-child {
-  font-size: 40px;
+.scoreNumber {
+  font-size: 24px;
   font-weight: var(--font-weight-700);
+  color: var(--color-5);
+}
+
+.scoreText {
+  font-size: var(--font-size-12);
+  color: var(--color-1);
 }
 
 .btn {
-  background: linear-gradient(
-    90deg,
-    #301b02 0%,
-    #6b6761 60.58%,
-    #b7b7b7 81.73%,
-    #1e1e1e 100%
-  );
+  background: var(--color-5);
   color: var(--color-white);
   padding: 12px 24px;
   border-radius: 100px;
-  margin: 0 auto;
   display: block;
-  margin-top: 24px;
+  margin: 24px auto 0;
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-600);
+  cursor: pointer;
+  transition: 0.2s;
+  border: none;
+}
+
+.btn:hover {
+  background: var(--color-10);
+}
+
+.btn:active {
+  transform: scale(0.98);
+  transition: transform 0.2s ease;
 }

@@ -17,23 +17,14 @@ const Card = ({ title, description, tips, score, img }: Props) => {
     const lastTwo = count % 100;
     const lastOne = count % 10;
 
-    if (lastTwo >= 11 && lastTwo <= 14) {
-      return "баллов";
-    }
-
-    if (lastOne === 1) {
-      return "балл";
-    }
-
-    if (lastOne >= 2 && lastOne <= 4) {
-      return "балла";
-    }
-
+    if (lastTwo >= 11 && lastTwo <= 14) return "баллов";
+    if (lastOne === 1) return "балл";
+    if (lastOne >= 2 && lastOne <= 4) return "балла";
     return "баллов";
   }
 
   return (
-    <div className={styles.card}>
+    <div className={`${styles.card} ${styles.cardInteractive}`}>
       <div className={styles.cardContent}>
         <h2>{title}</h2>
         <p>{description}</p>
@@ -44,17 +35,27 @@ const Card = ({ title, description, tips, score, img }: Props) => {
         </ul>
       </div>
 
-      <img src={img} alt="" />
+      <img src={img} alt="" className={styles.cardImage} />
 
       <div className={styles.score}>
-        <span>{score}</span>
-        <span>{getBallWord(score)}</span>
+        <span className={styles.scoreNumber}>{score}</span>
+        <span className={styles.scoreText}>{getBallWord(score)}</span>
       </div>
     </div>
   );
 };
 
 export default function Rating() {
+  // const { isLoading, isError, refetchAll } = useRatingPage();
+
+  // if (isLoading) {
+  //   return <FullscreenLoader />;
+  // }
+
+  // if (isError) {
+  //   return <FullscreenLoader isError onRetry={refetchAll} />;
+  // }
+
   function handleClick() {
     const message = JSON.stringify({
       action: "route_to_calculator",
@@ -77,24 +78,22 @@ export default function Rating() {
 
   return (
     <section>
-      <span className={styles.username}>Иван Иванович</span>
+      <span className="username">Иван Иванович</span>
 
-      <div className={styles.header}>
-        <div>
-          <span className={styles.currentRatingText}>Ваш текущий рейтинг</span>
-          <span className={styles.rating}>62</span>
-        </div>
-
-        <div>
-          <img src={gold} alt="" />
-
-          <span className={styles.levelText} data-name="gold">
-            Ваш уровень
-          </span>
+      <div className={styles.ratingHeader}>
+        <div className={styles.ratingCard}>
+          <div className={styles.ratingLeft}>
+            <span className={styles.ratingNumber}>62</span>
+            <span className={styles.ratingLabel}>Ваш текущий рейтинг</span>
+          </div>
+          <div className={styles.ratingLevel}>
+            <img src={gold} alt="" />
+            <span className={styles.levelText} data-name="gold"></span>
+          </div>
         </div>
       </div>
 
-      <div className={styles.container}>
+      <div className="container">
         <h1>Детализация рейтинга</h1>
         <div className={styles.subtitle}>
           Ваш рейтинг зависит от: объёма продаж, количества сделок и доли
@@ -137,11 +136,7 @@ export default function Rating() {
           img={vklad}
         />
 
-        <button
-          className={styles.btn}
-          onClick={handleClick}
-          name="smodelir-rost"
-        >
+        <button className={styles.btn} onClick={handleClick}>
           Смоделировать рост
         </button>
       </div>

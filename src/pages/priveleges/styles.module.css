@@ -1,63 +1,120 @@
-.container {
-  max-width: 420px;
-  margin: 20px auto;
-  background: #e9e9e9;
-  border-radius: 24px;
-  padding: 20px;
-  font-family: Arial, sans-serif;
+.statusBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
-h1 {
-  font-size: 20px;
-  margin-bottom: 16px;
+.status span[data-name="gold"]::after {
+  font-size: var(--font-size-18);
+  content: "GOLD";
+  font-weight: var(--font-weight-900);
+  letter-spacing: 0.7px;
+  background: var(--color-gradient-gold);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  display: inline-block;
+  filter: drop-shadow(2.20372px 2.20372px 3.64753px rgba(0, 0, 0, 0.3));
 }
 
-/* Tabs */
+.status span[data-name="silver"]::after {
+  font-size: var(--font-size-18);
+  content: "SILVER";
+  font-weight: var(--font-weight-900);
+  letter-spacing: 0.7px;
+  background: var(--color-gradient-silver);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  display: inline-block;
+  filter: drop-shadow(4px 4px 6.62069px rgba(0, 0, 0, 0.3));
+}
+
+.status span[data-name="black"]::after {
+  font-size: var(--font-size-18);
+  content: "BLACK";
+  font-weight: var(--font-weight-900);
+  letter-spacing: 0.7px;
+  background: var(--color-gradient-black);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  display: inline-block;
+  filter: drop-shadow(4px 4px 6.62069px rgba(74, 74, 74, 0.3));
+}
+
 .tabs {
   display: flex;
-  background: #dcdcdc;
-  border-radius: 20px;
+  background: var(--color-7);
+  border-radius: 999px;
   padding: 4px;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .tab {
   flex: 1;
-  padding: 8px;
+  padding: 10px;
   border: none;
   background: transparent;
-  border-radius: 16px;
-  font-size: 14px;
+  border-radius: 999px;
+  font-size: var(--font-size-14);
   cursor: pointer;
-  color: #777;
+  color: var(--color-8);
+  transition: 0.2s;
 }
 
 .activeTab {
-  background: #bfbfbf;
-  color: #000;
+  background: var(--color-white);
+  color: var(--color-6);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
-/* Card */
+.tabContent {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .card {
-  background: #dcdcdc;
+  background: #fff;
   border-radius: 20px;
   padding: 16px;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
-.locked {
-  opacity: 0.7;
+.cardInteractive {
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.cardInteractive:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
 }
 
 .cardTitle {
-  font-weight: bold;
+  font-weight: var(--font-weight-600);
+  font-size: var(--font-size-16);
   margin-bottom: 4px;
 }
 
 .cardDesc {
-  font-size: 13px;
-  color: #666;
-  margin-bottom: 12px;
+  font-size: var(--font-size-13);
+  color: var(--color-8);
+  margin-bottom: 14px;
 }
 
 .bottomRow {
@@ -67,39 +124,55 @@ h1 {
 }
 
 .value {
-  background: #000;
-  color: #fff;
-  padding: 10px 14px;
-  border-radius: 20px;
-  font-size: 13px;
+  display: flex;
+  flex-direction: column;
 }
 
-.primaryBtn {
-  background: linear-gradient(90deg, #0f766e, #22c55e);
-  color: white;
-  border: none;
-  padding: 10px 14px;
-  border-radius: 20px;
-  cursor: pointer;
-  font-size: 13px;
+.valueLabel {
+  font-size: var(--font-size-12);
+  color: var(--color-8);
 }
 
-.secondaryBtn {
-  background: linear-gradient(90deg, #f5d48c, #c38a3d);
-  border: none;
+.valueAmount {
+  font-size: var(--font-size-18);
+  font-weight: var(--font-weight-600);
+  color: var(--color-5);
+}
+
+.valueLocked .valueAmount {
+  color: var(--color-11);
+}
+
+.btn {
   padding: 10px 14px;
-  border-radius: 20px;
+  border-radius: 12px;
+  font-size: var(--font-size-13);
   cursor: pointer;
-  font-size: 13px;
+  transition: 0.2s;
+  border: none;
+}
+
+.btnPrimary {
+  background: var(--color-5);
+  color: var(--color-white);
+}
+
+.btnPrimary:hover {
+  background: var(--color-10);
+}
+
+.btnSecondary {
+  background: transparent;
+  border: 1px solid var(--color-5);
+  color: var(--color-5);
+}
+
+.btnSecondary:hover {
+  background: rgba(33, 160, 56, 0.08);
 }
 
 .note {
   margin-top: 8px;
-  font-size: 12px;
-  color: #777;
-}
-
-.sectionTitle {
-  margin: 16px 0 8px;
-  font-size: 16px;
+  font-size: var(--font-size-12);
+  color: var(--color-9);
 }

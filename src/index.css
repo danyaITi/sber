@@ -4,6 +4,15 @@
   --color-1: #6d6b6b;
   --color-2: #f0f0f0;
   --color-3: #198552;
+  --color-4: #b3b3b3;
+  --color-5: #21a038;
+  --color-6: #1e1e1e;
+  --color-7: #e9edf1;
+  --color-8: #7a7a7a;
+  --color-9: #a0a0a0;
+  --color-10: #1b8c31;
+  --color-11: #b0b0b0;
+
   --color-gradient-gold: linear-gradient(
     90deg,
     #bd8e59 0%,
@@ -32,11 +41,16 @@
   --font-weight-600: 600;
   --font-weight-400: 400;
 
+  --font-size-48: 48px;
+  --font-size-40: 40px;
+  --font-size-24: 24px;
   --font-size-22: 22px;
+  --font-size-20: 20px;
   --font-size-18: 18px;
   --font-size-16: 16px;
   --font-size-14: 14px;
   --font-size-12: 12px;
+  --font-size-13: 13px;
   --font-size-9: 9px;
 }
 
@@ -52,6 +66,11 @@
   color: var(--color-black);
 }
 
+button {
+  outline: none;
+  border: 0;
+}
+
 body {
   background: linear-gradient(
     192.1deg,
@@ -64,11 +83,32 @@ body {
   );
 }
 
-button {
-  outline: none;
-  border: 0;
+html {
+  min-height: 100%;
 }
 
 section {
-  margin: 18px 10px;
+  padding: 16px 8px;
+}
+
+.container {
+  background: var(--color-white);
+  padding: 14px 16px;
+  border-radius: 24px;
+}
+
+.container h1 {
+  font-size: 20px;
+  color: var(--color-black);
+  font-weight: var(--font-weight-600);
+  margin-bottom: 8px;
+}
+
+.username {
+  color: var(--color-white);
+  font-size: var(--font-size-16);
+  display: block;
+  text-align: center;
+  margin-bottom: 24px;
+  font-weight: 300;
 }

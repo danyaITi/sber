@@ -78,8 +78,6 @@ export default function Rating() {
 
   return (
     <section>
-      <span className="username">Иван Иванович</span>
-
       <div className={styles.ratingHeader}>
         <div className={styles.ratingCard}>
           <div className={styles.ratingLeft}>

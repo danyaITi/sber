@@ -1,22 +1,24 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { ratingApi } from "../api/rating";
+import { useTokenFromUrl } from "../utils/token";
 
 export function usePrivelegesPage() {
+  const token = useTokenFromUrl();
   const queryClient = useQueryClient();
 
   const userQuery = useQuery({
     queryKey: ["user"],
-    queryFn: ratingApi.getUser,
+    queryFn: () => ratingApi.getUser(token!),
   });
 
   const ratingQuery = useQuery({
     queryKey: ["rating"],
-    queryFn: ratingApi.getRating,
+    queryFn: () => ratingApi.getRating(token!),
   });
 
   const detailsQuery = useQuery({
     queryKey: ["details"],
-    queryFn: ratingApi.getDetails,
+    queryFn: () => ratingApi.getDetails(token!),
   });
 
   const isLoading =

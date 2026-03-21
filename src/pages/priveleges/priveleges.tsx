@@ -84,8 +84,6 @@ export default function Privileges() {
 
   return (
     <section>
-      <span className="username">Иван Иванович</span>
-
       <div className={styles.statusBox}>
         <img src={silver} alt="" />
         <div className={styles.status}>

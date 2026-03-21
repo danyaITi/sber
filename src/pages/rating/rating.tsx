@@ -81,12 +81,14 @@ export default function Rating() {
       <div className={styles.ratingHeader}>
         <div className={styles.ratingCard}>
           <div className={styles.ratingLeft}>
-            <span className={styles.ratingNumber}>62</span>
             <span className={styles.ratingLabel}>Ваш текущий рейтинг</span>
+            <span className={styles.ratingNumber}>62</span>
           </div>
           <div className={styles.ratingLevel}>
             <img src={gold} alt="" />
-            <span className={styles.levelText} data-name="gold"></span>
+            <span className={styles.levelText} data-name="gold">
+              Ваш уровень
+            </span>
           </div>
         </div>
       </div>

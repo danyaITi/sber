@@ -1,0 +1,105 @@
+.container {
+  max-width: 420px;
+  margin: 20px auto;
+  background: #e9e9e9;
+  border-radius: 24px;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  background: #dcdcdc;
+  border-radius: 20px;
+  padding: 4px;
+  margin-bottom: 16px;
+}
+
+.tab {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  background: transparent;
+  border-radius: 16px;
+  font-size: 14px;
+  cursor: pointer;
+  color: #777;
+}
+
+.activeTab {
+  background: #bfbfbf;
+  color: #000;
+}
+
+/* Card */
+.card {
+  background: #dcdcdc;
+  border-radius: 20px;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+
+.locked {
+  opacity: 0.7;
+}
+
+.cardTitle {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.cardDesc {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 12px;
+}
+
+.bottomRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.value {
+  background: #000;
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+}
+
+.primaryBtn {
+  background: linear-gradient(90deg, #0f766e, #22c55e);
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.secondaryBtn {
+  background: linear-gradient(90deg, #f5d48c, #c38a3d);
+  border: none;
+  padding: 10px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.note {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #777;
+}
+
+.sectionTitle {
+  margin: 16px 0 8px;
+  font-size: 16px;
+}

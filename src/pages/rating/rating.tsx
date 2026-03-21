@@ -54,7 +54,25 @@ const Card = ({ title, description, tips, score, img }: Props) => {
 };
 
 export default function Rating() {
-  function handleClick() {}
+  function handleClick() {
+    const message = JSON.stringify({
+      action: "route_to_calculator",
+    });
+
+    //@ts-ignore
+    // React Native WebView
+    window.ReactNativeWebView?.postMessage(message);
+
+    //@ts-ignore
+    // Android native bridge
+    window.AndroidBridge?.postMessage?.(message);
+
+    //@ts-ignore
+    // iOS native bridge
+    window.webkit?.messageHandlers?.nativeHandler?.postMessage({
+      action: "route_to_calculator",
+    });
+  }
 
   return (
     <div className={styles.container}>

@@ -88,6 +88,15 @@ body {
 
 html {
   min-height: 100%;
+  background: linear-gradient(
+    192.1deg,
+    #004c42 1.08%,
+    #1c9b63 21.87%,
+    #52bf4a 34.82%,
+    #24ad81 49.18%,
+    #026e95 68.31%,
+    #11191c 100%
+  );
 }
 
 .container {

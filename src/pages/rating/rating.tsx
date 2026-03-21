@@ -54,6 +54,8 @@ const Card = ({ title, description, tips, score, img }: Props) => {
 };
 
 export default function Rating() {
+  function handleClick() {}
+
   return (
     <div className={styles.container}>
       <h1>Детализация рейтинга</h1>
@@ -98,7 +100,9 @@ export default function Rating() {
         img={vklad}
       />
 
-      <button className={styles.btn}>Смоделировать рост</button>
+      <button className={styles.btn} onClick={handleClick} name="smodelir-rost">
+        Смоделировать рост
+      </button>
     </div>
   );
 }

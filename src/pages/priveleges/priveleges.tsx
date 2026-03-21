@@ -17,7 +17,7 @@ const Card = ({ title, desc, value, button, variant = "active" }: Props) => {
     action: "route_to_calculator" | "route_to_rating_details",
   ) {
     const message = JSON.stringify({
-      action: "route_to_calculator",
+      action,
     });
 
     //@ts-ignore
@@ -26,9 +26,7 @@ const Card = ({ title, desc, value, button, variant = "active" }: Props) => {
 
     //@ts-ignore
     // iOS native bridge
-    window.webkit?.messageHandlers?.nativeHandler?.postMessage({
-      action,
-    });
+    window.webkit?.messageHandlers?.nativeHandler?.postMessage(message);
   }
 
   return (

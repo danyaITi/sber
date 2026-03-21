@@ -18,17 +18,21 @@ const queryClient = new QueryClient({
 
 const Layout = ({ children }: PropsWithChildren) => {
   function handleClick() {
-    //@ts-ignore
-    // Android native bridge
-    window.AndroidBridge?.postMessage?.({
+    const messageAndroid = JSON.stringify({
       action: "route_to_calculator",
     });
 
-    //@ts-ignore
-    // iOS native bridge
-    window.webkit?.messageHandlers?.nativeHandler?.postMessage({
+    const messageIos = JSON.stringify({
       action: "route_back",
     });
+
+    //@ts-ignore
+    // Android native bridge
+    window.AndroidBridge?.postMessage?.(messageAndroid);
+
+    //@ts-ignore
+    // iOS native bridge
+    window.webkit?.messageHandlers?.nativeHandler?.postMessage(messageIos);
   }
 
   return (

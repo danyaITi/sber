@@ -62,18 +62,12 @@ export default function Rating() {
     });
 
     //@ts-ignore
-    // React Native WebView
-    window.ReactNativeWebView?.postMessage(message);
-
-    //@ts-ignore
     // Android native bridge
     window.AndroidBridge?.postMessage?.(message);
 
     //@ts-ignore
     // iOS native bridge
-    window.webkit?.messageHandlers?.nativeHandler?.postMessage({
-      action: "route_to_calculator",
-    });
+    window.webkit?.messageHandlers?.nativeHandler?.postMessage(message);
   }
 
   return (

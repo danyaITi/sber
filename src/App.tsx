@@ -18,13 +18,11 @@ const queryClient = new QueryClient({
 
 const Layout = ({ children }: PropsWithChildren) => {
   function handleClick() {
-    const message = JSON.stringify({
-      action: "route_to_calculator",
-    });
-
     //@ts-ignore
     // Android native bridge
-    window.AndroidBridge?.postMessage?.(message);
+    window.AndroidBridge?.postMessage?.({
+      action: "route_to_calculator",
+    });
 
     //@ts-ignore
     // iOS native bridge

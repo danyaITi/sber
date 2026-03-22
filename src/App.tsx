@@ -58,7 +58,7 @@ const Layout = ({ children }: PropsWithChildren) => {
           <Vector width={7} height={13} />
         </button>
 
-        <span className="username">{`${userQuery.data?.data.first_name} ${userQuery.data?.data.middle_name}`}</span>
+        <span className="username">{`${userQuery.data?.data.first_name} ${userQuery.data?.data.last_name}`}</span>
       </div>
 
       <div>{children}</div>

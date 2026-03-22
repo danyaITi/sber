@@ -19,7 +19,7 @@ export function usePrivelegesPage() {
 
   const isLoading = benefitsQuery.isLoading || ratingQuery.isLoading;
 
-  const isError = benefitsQuery.isError || ratingQuery.isError;
+  const isError = benefitsQuery.isError || ratingQuery.isError || !token;
 
   const refetchAll = () => {
     queryClient.invalidateQueries({

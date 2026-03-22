@@ -19,7 +19,7 @@ export function useRatingPage() {
 
   const isLoading = ratingQuery.isLoading || detailsQuery.isLoading;
 
-  const isError = ratingQuery.isError || detailsQuery.isError;
+  const isError = ratingQuery.isError || detailsQuery.isError || !token;
 
   const refetchAll = () => {
     queryClient.invalidateQueries({

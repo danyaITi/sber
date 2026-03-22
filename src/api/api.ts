@@ -67,7 +67,7 @@ export class ApiClient {
 
   constructor(token: string | null) {
     this.axiosInstance = axios.create({
-      baseURL: "http://212.192.193.88:8080/api/v1",
+      baseURL: "https://hack.3bc79ih0kn3m9dd9dev96e.sarl/api/v1",
     });
 
     this.axiosInstance.interceptors.request.use(

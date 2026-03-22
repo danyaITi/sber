@@ -1,50 +1,40 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { ratingApi } from "../api/rating";
-import { useTokenFromUrl } from "../utils/token";
+import { useApi } from "../context/apiContext";
 
 export function usePrivelegesPage() {
-  const token = useTokenFromUrl();
+  const { apiClient, token } = useApi();
   const queryClient = useQueryClient();
 
-  const userQuery = useQuery({
-    queryKey: ["user"],
-    queryFn: () => ratingApi.getUser(token!),
+  const benefitsQuery = useQuery({
+    queryKey: ["benefits"],
+    queryFn: () => apiClient?.getBenefits(),
+    enabled: !!token,
   });
 
   const ratingQuery = useQuery({
     queryKey: ["rating"],
-    queryFn: () => ratingApi.getRating(token!),
+    queryFn: () => apiClient?.getRating(),
+    enabled: !!token,
   });
 
-  const detailsQuery = useQuery({
-    queryKey: ["details"],
-    queryFn: () => ratingApi.getDetails(token!),
-  });
+  const isLoading = benefitsQuery.isLoading || ratingQuery.isLoading;
 
-  const isLoading =
-    userQuery.isLoading || ratingQuery.isLoading || detailsQuery.isLoading;
-
-  const isError =
-    userQuery.isError || ratingQuery.isError || detailsQuery.isError;
+  const isError = benefitsQuery.isError || ratingQuery.isError;
 
   const refetchAll = () => {
     queryClient.invalidateQueries({
-      queryKey: ["user"],
+      queryKey: ["benefits"],
     });
     queryClient.invalidateQueries({
       queryKey: ["rating"],
-    });
-    queryClient.invalidateQueries({
-      queryKey: ["details"],
     });
   };
 
   return {
     isLoading,
     isError,
-    user: userQuery.data,
-    rating: ratingQuery.data,
-    details: detailsQuery.data,
+    benefits: benefitsQuery.data?.data,
+    rating: ratingQuery.data?.data,
     refetchAll,
   };
 }

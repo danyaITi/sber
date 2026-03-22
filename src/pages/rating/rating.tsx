@@ -3,6 +3,10 @@ import credit from "../../assets/credit.png";
 import istorii from "../../assets/istorii.png";
 import vklad from "../../assets/vklad.png";
 import gold from "../../assets/gold.png";
+import silver from "../../assets/silver.png";
+import black from "../../assets/black.png";
+import { useRatingPage } from "../../hooks/useRatingPage";
+import { FullscreenLoader } from "../../components/loader/loader";
 
 type Props = {
   title: string;
@@ -46,15 +50,15 @@ const Card = ({ title, description, tips, score, img }: Props) => {
 };
 
 export default function Rating() {
-  // const { isLoading, isError, refetchAll } = useRatingPage();
+  const { isLoading, isError, refetchAll, details, rating } = useRatingPage();
 
-  // if (isLoading) {
-  //   return <FullscreenLoader />;
-  // }
+  if (isLoading) {
+    return <FullscreenLoader />;
+  }
 
-  // if (isError) {
-  //   return <FullscreenLoader isError onRetry={refetchAll} />;
-  // }
+  if (isError) {
+    return <FullscreenLoader isError onRetry={refetchAll} />;
+  }
 
   function handleClick() {
     const message = JSON.stringify({
@@ -70,17 +74,35 @@ export default function Rating() {
     window.webkit?.messageHandlers?.nativeHandler?.postMessage(message);
   }
 
+  const generateImgStatus = () => {
+    switch (rating?.level.name) {
+      case "Black":
+        return black;
+
+      case "Gold":
+        return gold;
+
+      case "Silver":
+        return silver;
+    }
+  };
+
   return (
     <section>
       <div className={styles.ratingHeader}>
         <div className={styles.ratingCard}>
           <div className={styles.ratingLeft}>
             <span className={styles.ratingLabel}>Ваш текущий рейтинг</span>
-            <span className={styles.ratingNumber}>62</span>
+            <span className={styles.ratingNumber}>
+              {rating?.rating.total_points}
+            </span>
           </div>
           <div className={styles.ratingLevel}>
-            <img src={gold} alt="" />
-            <span className={styles.levelText} data-name="gold">
+            <img src={generateImgStatus()} alt="" />
+            <span
+              className={styles.levelText}
+              data-name={rating?.level.name.toLowerCase()}
+            >
               Ваш уровень
             </span>
           </div>
@@ -102,7 +124,7 @@ export default function Rating() {
             "работать с клиентами с высоким чеком",
             "предлагать дополнительные кредитные продукты",
           ]}
-          score={32}
+          score={details?.volume_of_sales ?? 0}
           img={credit}
         />
 
@@ -114,7 +136,7 @@ export default function Rating() {
             "работать с повторными клиентами",
             "увеличивать конверсию заявок",
           ]}
-          score={18}
+          score={details?.count_of_deals ?? 0}
           img={istorii}
         />
 
@@ -126,7 +148,7 @@ export default function Rating() {
             "увеличивать долю ипотечных продуктов",
             "активнее использовать банковские предложения",
           ]}
-          score={12}
+          score={details?.bank_portion_of_deals ?? 0}
           img={vklad}
         />
 

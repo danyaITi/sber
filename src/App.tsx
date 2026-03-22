@@ -2,9 +2,14 @@ import Privileges from "./pages/priveleges/priveleges";
 import Rating from "./pages/rating/rating";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import type { PropsWithChildren } from "react";
+import {
+  QueryClient,
+  QueryClientProvider,
+  useQuery,
+} from "@tanstack/react-query";
+import { type PropsWithChildren } from "react";
 import Vector from "./assets/vector.svg?react";
+import { ApiProvider, useApi } from "./context/apiContext";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -17,6 +22,14 @@ const queryClient = new QueryClient({
 });
 
 const Layout = ({ children }: PropsWithChildren) => {
+  const { apiClient, token } = useApi();
+
+  const userQuery = useQuery({
+    queryKey: ["user"],
+    queryFn: () => apiClient?.getUser(),
+    enabled: !!token,
+  });
+
   function handleClick() {
     const message = JSON.stringify({
       action: "route_back",
@@ -45,7 +58,7 @@ const Layout = ({ children }: PropsWithChildren) => {
           <Vector width={7} height={13} />
         </button>
 
-        <span className="username">Иван Иванович</span>
+        <span className="username">{`${userQuery.data?.data.first_name} ${userQuery.data?.data.middle_name}`}</span>
       </div>
 
       <div>{children}</div>
@@ -53,26 +66,30 @@ const Layout = ({ children }: PropsWithChildren) => {
   );
 };
 
-const AppRoutes = () => (
-  <Routes>
-    <Route
-      path="/priveleges"
-      element={
-        <Layout>
-          <Privileges />
-        </Layout>
-      }
-    />
-    <Route
-      path="/rating"
-      element={
-        <Layout>
-          <Rating />
-        </Layout>
-      }
-    />
-  </Routes>
-);
+const AppRoutes = () => {
+  return (
+    <ApiProvider>
+      <Routes>
+        <Route
+          path="/priveleges"
+          element={
+            <Layout>
+              <Privileges />
+            </Layout>
+          }
+        />
+        <Route
+          path="/rating"
+          element={
+            <Layout>
+              <Rating />
+            </Layout>
+          }
+        />
+      </Routes>
+    </ApiProvider>
+  );
+};
 
 function App() {
   return (

@@ -6,6 +6,10 @@
   margin-bottom: 20px;
 }
 
+.statusBox img {
+  width: 70px;
+}
+
 .status span[data-name="gold"]::after {
   font-size: var(--font-size-18);
   content: "GOLD";
